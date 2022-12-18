@@ -13,7 +13,7 @@ public class ObstacleSpawn : MonoBehaviour
 
         for (int i = 0; i < numberOfObstacle; i++)
         {
-            Instantiate(obstacle, playerTransform.position + Vector3.forward * (60 + i * 100), Quaternion.Euler(0, 90, 0), transform);
+            Instantiate(obstacle, playerTransform.position + Vector3.forward * (60 + i * 60), Quaternion.Euler(0, 90, 0), transform);
         }
     }
 }
