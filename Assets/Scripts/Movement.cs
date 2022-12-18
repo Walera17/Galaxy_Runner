@@ -14,10 +14,18 @@ public class Movement : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 deltaSwipe;
 
+    private void Start()
+    {
+        rb.velocity = Vector3.forward * 20;
+    }
+
     void Update()
     {
+#if UNITY_STANDALONE_WIN
         UpdatePersonalComputer();
-        //UpdateMobile();
+#else
+        UpdateMobile();
+#endif
     }
 
     private void UpdateMobile()
