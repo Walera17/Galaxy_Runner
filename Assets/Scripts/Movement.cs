@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     private float verticalInput;
     private float horizontalTimer;
 
+    private float horizontalLocation;
+
     // Mobile Variables
     private Vector2 startPosition;
     private Vector2 deltaSwipe;
@@ -87,8 +89,15 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector3(horizontalInput * 24, rb.velocity.y, rb.velocity.z);
 
-            if (Math.Abs(horizontalInput) > float.Epsilon)
+            if (Math.Abs(horizontalInput) > float.Epsilon && MathF.Abs(horizontalLocation + horizontalInput) < 3)
+            {
+                horizontalLocation += horizontalInput;      // horizontalLocation * 5.5
                 horizontalTimer = maxHorizontalTimer;
+            }
+            else
+            {
+                transform.position = new Vector3(horizontalLocation * 5.5f, transform.position.y, transform.position.z);
+            }
         }
     }
 
@@ -96,6 +105,13 @@ public class Movement : MonoBehaviour
     {
         if (Math.Abs(verticalInput) < float.Epsilon) return;
 
-        rb.velocity = new Vector3(rb.velocity.x, verticalInput * 10, rb.velocity.z);
+        if (rb.velocity.y * verticalInput > 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + verticalInput * 4, rb.velocity.z);
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, verticalInput * 10, rb.velocity.z);
+        }
     }
 }
