@@ -14,7 +14,7 @@ public class Tile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
 
-        ResetTile();
+        //ResetTile();
     }
 
     public void ResetTile()

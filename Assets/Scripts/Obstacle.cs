@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour
 
             tilesGameObjects[temp[index]].SetActive(false);
 
-            temp.Remove(index);
+            temp.RemoveAt(index);
         }
 
         foreach (int tileNumber in temp)
