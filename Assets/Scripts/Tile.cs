@@ -2,24 +2,19 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private Material[] materials;
     private Vector3 startPosition;
     private Rigidbody rb;
     private MeshRenderer meshRenderer;
 
     void Awake()
     {
-        materials = Resources.LoadAll<Material>("Materials");
         startPosition = transform.localPosition;
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
-
-        //ResetTile();
     }
 
-    public void ResetTile()
+    public void ResetTile(Material material)
     {
-        Material material = materials[Random.Range(0, materials.Length)];
         meshRenderer.material = material;
 
         if (transform.localPosition != startPosition)

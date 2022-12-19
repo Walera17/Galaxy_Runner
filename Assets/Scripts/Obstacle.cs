@@ -6,10 +6,12 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private GameObject[] tilesGameObjects;
     [SerializeField] private Tile[] tiles;
 
+    private Material[] materials;
     private readonly List<int> obstacles = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
 
     private void Start()
     {
+        materials = Resources.LoadAll<Material>("Materials");
         RandomizeObstacle();
     }
 
@@ -33,7 +35,7 @@ public class Obstacle : MonoBehaviour
         foreach (int tileNumber in temp)
         {
             tilesGameObjects[tileNumber].SetActive(true);
-            tiles[tileNumber].ResetTile();
+            tiles[tileNumber].ResetTile(materials[Random.Range(0, materials.Length)]);
         }
     }
 
