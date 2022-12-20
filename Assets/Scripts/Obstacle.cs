@@ -9,10 +9,16 @@ public class Obstacle : MonoBehaviour
     private Material[] materials;
     private readonly List<int> obstacles = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
 
+    private static PlayerManager _playerManager;
+
     private void Start()
     {
         materials = Resources.LoadAll<Material>("Materials");
+
         RandomizeObstacle();
+
+        if (_playerManager == null)
+            _playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
     }
 
     void RandomizeObstacle()
@@ -46,5 +52,16 @@ public class Obstacle : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 15 + 60 * 4);
 
         RandomizeObstacle();
+
+        _playerManager.Score = 10;
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerManager != null)
+        {
+            _playerManager = null;
+            print("Destroy");
+        }
     }
 }
