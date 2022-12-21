@@ -95,9 +95,7 @@ public class Movement : MonoBehaviour
                 horizontalTimer = maxHorizontalTimer;
             }
             else
-            {
                 transform.position = new Vector3(horizontalLocation * 5.5f, transform.position.y, transform.position.z);
-            }
         }
     }
 
@@ -106,12 +104,8 @@ public class Movement : MonoBehaviour
         if (Math.Abs(verticalInput) < float.Epsilon) return;
 
         if (rb.velocity.y * verticalInput > 0)
-        {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + verticalInput * 4, rb.velocity.z);
-        }
         else
-        {
             rb.velocity = new Vector3(rb.velocity.x, verticalInput * 10, rb.velocity.z);
-        }
     }
 }
