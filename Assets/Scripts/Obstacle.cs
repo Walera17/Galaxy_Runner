@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private Tile[] tiles;
 
     private readonly List<int> obstacles = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
+    private readonly List<int> constantlyActivates = new List<int>() { 4, 9, 14, 19, 24 };
 
     private static Material[] _materials;
     private static PlayerManager _playerManager;
@@ -36,6 +37,11 @@ public class Obstacle : MonoBehaviour
         for (int i = 0; i < number; i++)
         {
             index = Random.Range(0, temp.Count);
+
+            while (constantlyActivates.Contains(temp[index]))
+            {
+                index = Random.Range(0, temp.Count);
+            }
 
             tilesGameObjects[temp[index]].SetActive(false);
 

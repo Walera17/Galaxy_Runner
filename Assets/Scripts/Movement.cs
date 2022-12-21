@@ -104,8 +104,8 @@ public class Movement : MonoBehaviour
         if (Math.Abs(verticalInput) < float.Epsilon) return;
 
         if (rb.velocity.y * verticalInput > 0)
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + verticalInput * 4, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y + (verticalInput * 10 + 3), rb.velocity.z);
         else
-            rb.velocity = new Vector3(rb.velocity.x, verticalInput * 10, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, verticalInput * 20 + 5, rb.velocity.z);
     }
 }

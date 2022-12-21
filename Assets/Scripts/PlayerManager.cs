@@ -73,14 +73,14 @@ public class PlayerManager : MonoBehaviour
         //}
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (!other.gameObject.CompareTag("Boarder")) return;
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.gameObject.CompareTag("Boarder")) return;
 
-        HighScore = Score;
+    //    HighScore = Score;
 
-        StartCoroutine(SlowTime());
-    }
+    //    StartCoroutine(SlowTime());
+    //}
 
     private IEnumerator SlowTime()
     {
