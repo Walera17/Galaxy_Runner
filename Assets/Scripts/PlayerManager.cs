@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -70,5 +71,21 @@ public class PlayerManager : MonoBehaviour
         //    _highScore = 0;
         //    PlayerPrefs.Save();
         //}
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (!other.gameObject.CompareTag("Boarder")) return;
+
+        HighScore = Score;
+
+        StartCoroutine(SlowTime());
+    }
+
+    private IEnumerator SlowTime()
+    {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(0.75f);
+        Time.timeScale = 0f;
     }
 }
