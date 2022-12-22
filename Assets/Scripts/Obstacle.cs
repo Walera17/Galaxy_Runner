@@ -36,12 +36,10 @@ public class Obstacle : MonoBehaviour
 
         for (int i = 0; i < number; i++)
         {
-            index = Random.Range(0, temp.Count);
-
-            while (constantlyActivates.Contains(temp[index]))
+            do
             {
                 index = Random.Range(0, temp.Count);
-            }
+            } while (constantlyActivates.Contains(temp[index]));
 
             tilesGameObjects[temp[index]].SetActive(false);
 

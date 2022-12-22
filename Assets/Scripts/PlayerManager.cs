@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particle;
+
     private float _score;
     private float _highScore;
     private GameData gameData;
@@ -73,14 +75,16 @@ public class PlayerManager : MonoBehaviour
         //}
     }
 
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    if (other.gameObject.CompareTag("Boarder")) return;
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Boarder")) return;
 
-    //    HighScore = Score;
+        particle.Play();
 
-    //    StartCoroutine(SlowTime());
-    //}
+        HighScore = Score;
+
+        StartCoroutine(SlowTime());
+    }
 
     private IEnumerator SlowTime()
     {
